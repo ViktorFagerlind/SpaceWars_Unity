@@ -1,4 +1,5 @@
 Release/
+Temp/
 *.sln
 *.userprefs
 *.csproj
