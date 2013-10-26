@@ -1,0 +1,5 @@
+Release/
+*.sln
+*.userprefs
+*.csproj
+*.pidb
