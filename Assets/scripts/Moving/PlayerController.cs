@@ -3,10 +3,10 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour 
 {
-  public float m_moveDistConst;
-  public float m_moveCapForce;
+  public float m_moveDistConst = 400;
+  public float m_moveCapForce  = 5000;
   
-  public float m_leanConst;
+  public float m_leanConst     = 0.5f;
   
   
 	// Use this for initialization
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate () 
 	{
     //------------ Get mouse position-------------------
-    Vector3 mousePosition = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 100));
+    Vector3 mousePosition = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
     
     //------------ Handle position ---------------------
     Vector3 distance  = mousePosition - transform.position;
@@ -31,10 +31,6 @@ public class PlayerController : MonoBehaviour
     }
     
     rigidbody.AddForce (force);
-    
-//    print ("mousePosition: "  + mousePosition);
-//    print ("force: "          + force);
-//    print ("distance: "       + distance);
 	}
   
   

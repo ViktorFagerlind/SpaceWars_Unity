@@ -9,10 +9,10 @@ public class TimeFactory : MonoBehaviour
   [System.Serializable]
   public class FactoryItem
   {
-    public Transform entity;
-    public float     startTime;
-    public float     intervalTime;
-    public float     endTime;
+    public Transform entity       = null;
+    public float     startTime    = 0;
+    public float     intervalTime = 1;
+    public float     endTime      = 10;
   }
  
   // --- Public attributes ---------------------------------------------------------------------------------------------
