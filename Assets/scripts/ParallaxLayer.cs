@@ -7,8 +7,6 @@ public class ParallaxLayer : MonoBehaviour
   public  float m_size           = 100f;
   public  float m_threasholdPos  = 0f;
 
-  public  bool  m_print = true;
-  
 	// Use this for initialization
 	void Start () 
   {
@@ -21,8 +19,5 @@ public class ParallaxLayer : MonoBehaviour
     
     if (transform.position.y < m_threasholdPos)
       transform.position = new Vector3 (transform.position.x, transform.position.y + m_size, transform.position.z);
-    
-    if (m_print)
-      print (transform.position.y);
 	}
 }
