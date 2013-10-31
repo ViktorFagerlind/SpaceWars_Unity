@@ -1,13 +1,17 @@
 # =============== #
 # Unity generated #
 # =============== #
-Release/
 Temp/
-ExportedObj/
+Obj/
+UnityGenerated/
+Library/
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
+Release/
+ExportedObj/
+
 *.svd
 *.userprefs
 *.csproj
