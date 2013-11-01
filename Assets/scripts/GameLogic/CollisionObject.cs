@@ -32,12 +32,9 @@ public class CollisionObject : MonoBehaviour
     
     health = health - otherCollisionObject.damageOutput;
     
-    print ("health: " + health);
-    
     if (health < 0f)
     {
       OnKilled ();
-      print ("KILLED" + health);
     }
     
   }  
