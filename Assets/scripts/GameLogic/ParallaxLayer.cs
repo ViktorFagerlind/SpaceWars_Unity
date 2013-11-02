@@ -15,9 +15,9 @@ public class ParallaxLayer : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
   {
-	  transform.position = new Vector3 (transform.position.x, transform.position.y - m_speed, transform.position.z);
+	  transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y - m_speed, transform.localPosition.z);
     
-    if (transform.position.y < m_threasholdPos)
-      transform.position = new Vector3 (transform.position.x, transform.position.y + m_size, transform.position.z);
+    if (transform.localPosition.y < m_threasholdPos)
+      transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y + m_size, transform.localPosition.z);
 	}
 }
