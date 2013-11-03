@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 82: {fileID: 8200000}
   m_Layer: 9
-  m_Name: shot
+  m_Name: red_lazer_shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 1aebbf90d3b55e4428b15c5fca7da623, type: 2}
+  - {fileID: 2100000, guid: d70c95eef1adc624ba1b6b50979e1277, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_damageOutput: 30
   m_health: 0
   m_deathExplosion: {fileID: 0}
-  m_hitExplosion: {fileID: 100000, guid: b67c67436de52f54f93d157114a77791, type: 2}
+  m_hitExplosion: {fileID: 100000, guid: c1e0abfe068410e4ea31849945f6db8b, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
