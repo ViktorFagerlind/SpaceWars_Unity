@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate () 
 	{
     //------------ Get mouse position-------------------
-    Vector3 mousePosition = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+    Vector3 mousePosition = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y));
     
     //------------ Handle position ---------------------
     Vector3 distance  = mousePosition - transform.position;

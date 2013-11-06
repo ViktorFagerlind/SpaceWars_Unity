@@ -12,9 +12,9 @@ public class Stabilizer : MonoBehaviour
     Vector3 predictedUp = Quaternion.AngleAxis (
             rigidbody.angularVelocity.magnitude * Mathf.Rad2Deg * m_stability / m_speed,
             rigidbody.angularVelocity
-        ) * transform.up;
+        ) * transform.forward;
  
-    Vector3 torqueVector = Vector3.Cross (predictedUp, Vector3.up);
+    Vector3 torqueVector = Vector3.Cross (predictedUp, Vector3.forward);
     rigidbody.AddTorque (torqueVector * m_speed * m_speed);
   }
 }

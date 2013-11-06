@@ -41,15 +41,13 @@ public class Weapon : MonoBehaviour
       Vector3    shotVelocity; 
       Quaternion shotRotation;
       
-      shotVelocity = transform.TransformDirection (Vector3.up) * m_shotSpeed + m_inheritSpeed * m_speed;
-      shotRotation = Quaternion.Euler (0, 0, Mathf.Atan (shotVelocity.y / shotVelocity.x) * Mathf.Rad2Deg + 90f);
-      
-//      Quaternion shotRotation = Quaternion.Euler (0, 0, transform.rotation.eulerAngles.z);
+      shotVelocity = transform.forward * m_shotSpeed + m_inheritSpeed * m_speed;
+      shotRotation = Quaternion.LookRotation (shotVelocity);
       
       newShot = Instantiate (m_shot, transform.position, shotRotation) as GameObject;
       
       newShot.layer               = gameObject.layer;
-      newShot.rigidbody.velocity  = shotVelocity; //newShot.transform.TransformDirection (Vector3.up * m_shotSpeed) + m_inheritSpeed * m_speed;
+      newShot.rigidbody.velocity  = shotVelocity;
       
       m_lastShotTime = currentTime;
     }

@@ -14,11 +14,13 @@ public class LeanShip : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
   {
-    Vector3 rightForVehicle = new Vector3 (1, 0, 0);
-    rightForVehicle = Quaternion.AngleAxis (transform.rotation.z, Vector3.forward) * rightForVehicle;
+    float leanZ = Vector3.Dot (rigidbody.velocity, transform.right) * m_leanConst;
+    print ("------");
+    print ("" + rigidbody.velocity);
+    print ("" + transform.right);
+    print ("" + leanZ);
+    print ("------");
     
-    float leanY = Vector3.Dot (rigidbody.velocity, rightForVehicle) * m_leanConst;
-    
-    transform.localEulerAngles = new Vector3(transform.rotation.eulerAngles.x, -leanY, transform.rotation.eulerAngles.z);
+    transform.localEulerAngles = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -leanZ);
   }
 }

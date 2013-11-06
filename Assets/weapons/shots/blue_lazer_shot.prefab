@@ -29,8 +29,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.4027672, y: 3.93916774, z: 4.29851532}
-  m_LocalScale: {x: .569999993, y: 7.13000011, z: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalScale: {x: .057, y: 1, z: .800000012}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -57,7 +57,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564fd3abc8981e247a34d9c8689e1a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_damageOutput: 30
+  m_damageOutput: 50
   m_health: 0
   m_deathExplosion: {fileID: 0}
   m_hitExplosion: {fileID: 100000, guid: b67c67436de52f54f93d157114a77791, type: 2}
