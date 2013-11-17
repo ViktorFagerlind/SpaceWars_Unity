@@ -9,18 +9,23 @@ public class Weapon : MonoBehaviour
   public  GameObject  m_shot;
   
   private float       m_speedCalculationTime = 0.1f; 
-  private float       m_lastShotTime; 
   private Vector3     m_speed; 
   private Vector3     m_previousPosition; 
+  
+  private float       m_lastShotTime; 
+  
   
 	// Use this for initialization
 	void Start () 
   {
-    m_lastShotTime = Time.realtimeSinceStartup;
-
     m_speed = new Vector3 (0, 0, 0);
     m_previousPosition = gameObject.transform.position;
-    InvokeRepeating ("SpeedCheck", m_speedCalculationTime, m_speedCalculationTime);
+    
+    // Use repeating function for speed check if there is no rigid body
+    if (m_inheritSpeed != 0f && rigidbody == null)
+      InvokeRepeating ("SpeedCheck", m_speedCalculationTime, m_speedCalculationTime);
+    
+    m_lastShotTime = Time.realtimeSinceStartup + Random.Range (0f, m_fireDeltaTime);
 	}
 	
   void SpeedCheck ()
@@ -30,26 +35,31 @@ public class Weapon : MonoBehaviour
     m_previousPosition = gameObject.transform.position;
   }
   
-	// Update is called once per frame
-	void Update () 
+  public bool IsTimeToShoot ()
   {
     float currentTime = Time.realtimeSinceStartup;
     
-    if (m_lastShotTime + m_fireDeltaTime < currentTime)
-    {
-      GameObject newShot;
-      Vector3    shotVelocity; 
-      Quaternion shotRotation;
-      
-      shotVelocity = transform.forward * m_shotSpeed + m_inheritSpeed * m_speed;
-      shotRotation = Quaternion.LookRotation (shotVelocity);
-      
-      newShot = Instantiate (m_shot, transform.position, shotRotation) as GameObject;
-      
-      newShot.layer               = gameObject.layer;
-      newShot.rigidbody.velocity  = shotVelocity;
-      
-      m_lastShotTime = currentTime;
-    }
-	}
+    return m_lastShotTime + m_fireDeltaTime < currentTime;
+  }
+  
+  public void Shoot ()
+  {
+    GameObject newShot;
+    Vector3    shotVelocity; 
+    Quaternion shotRotation;
+    
+    // Use rigid body for speed if it exists
+    if (rigidbody != null)
+      m_speed = rigidbody.velocity;
+    
+    shotVelocity = transform.forward * m_shotSpeed + m_inheritSpeed * m_speed;
+    shotRotation = Quaternion.LookRotation (shotVelocity);
+    
+    newShot = Instantiate (m_shot, transform.position, shotRotation) as GameObject;
+    
+    newShot.layer               = gameObject.layer;
+    newShot.rigidbody.velocity  = shotVelocity;
+    
+    m_lastShotTime = Time.realtimeSinceStartup;
+  }
 }

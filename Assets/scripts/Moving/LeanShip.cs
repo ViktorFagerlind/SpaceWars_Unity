@@ -12,14 +12,16 @@ public class LeanShip : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
   {
     float leanZ = Vector3.Dot (rigidbody.velocity, transform.right) * m_leanConst;
+    /*  
     print ("------");
     print ("" + rigidbody.velocity);
     print ("" + transform.right);
     print ("" + leanZ);
     print ("------");
+    */
     
     transform.localEulerAngles = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -leanZ);
   }

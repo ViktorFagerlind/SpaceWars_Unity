@@ -71,7 +71,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
@@ -83,7 +83,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 9.01000023, y: 1, z: 9.65999985}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &8200000
 AudioSource:
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_damageOutput: 50
   m_health: 0
   m_deathExplosion: {fileID: 0}
-  m_hitExplosion: {fileID: 100000, guid: b67c67436de52f54f93d157114a77791, type: 2}
+  m_hitExplosion: {fileID: 100000, guid: 6ae2a4de46c112d479bf272b39418afb, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

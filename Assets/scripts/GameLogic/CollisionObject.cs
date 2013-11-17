@@ -23,8 +23,8 @@ public class CollisionObject : MonoBehaviour
   
   void OnCollisionEnter (Collision collision)
   {
-    Transform otherObject = collision.collider.transform.root;
-    ContactPoint contact = collision.contacts[0];    
+    ContactPoint contact      = collision.contacts[0];    
+    Transform    otherObject  = contact.otherCollider.transform; // collision.collider.transform.root;
     
     OnHit (otherObject, contact);
     
@@ -36,6 +36,5 @@ public class CollisionObject : MonoBehaviour
     {
       OnKilled ();
     }
-    
   }  
 }

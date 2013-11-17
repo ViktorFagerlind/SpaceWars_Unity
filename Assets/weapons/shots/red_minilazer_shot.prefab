@@ -14,9 +14,8 @@ GameObject:
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
-  - 82: {fileID: 8200000}
   m_Layer: 9
-  m_Name: red_lazer_shot
+  m_Name: red_minilazer_shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: 0, z: 0}
-  m_LocalScale: {x: .057, y: 1, z: .800000012}
+  m_LocalScale: {x: .0399999991, y: 1, z: .310000002}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -65,7 +64,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: .0299999993
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -85,64 +84,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.44999981, y: 1, z: 9.72000027}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &8200000
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 291522234d4088b4697e0432f85b57f6, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: .120999999
-  m_Pitch: 1.12
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 1
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,7 +109,7 @@ MonoBehaviour:
   m_damageOutput: 50
   m_health: 0
   m_deathExplosion: {fileID: 0}
-  m_hitExplosion: {fileID: 100000, guid: c1e0abfe068410e4ea31849945f6db8b, type: 2}
+  m_hitExplosion: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

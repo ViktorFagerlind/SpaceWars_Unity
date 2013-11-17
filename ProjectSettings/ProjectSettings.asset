@@ -148,7 +148,22 @@ PlayerSettings:
   ps3SaveGameSlots: 1
   ps3TrialMode: 0
   flashStrippingLevel: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    data:
+      first: 1
+      second: 
+    data:
+      first: 2
+      second: 
+    data:
+      first: 4
+      second: 
+    data:
+      first: 7
+      second: 
+    data:
+      first: 16
+      second: 
   metroPackageName: TestProject2
   metroPackageLogo: 
   metroPackageVersion: 
