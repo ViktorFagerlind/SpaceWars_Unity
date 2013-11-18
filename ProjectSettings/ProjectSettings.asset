@@ -24,7 +24,7 @@ PlayerSettings:
   m_UseDX11: 1
   iosShowActivityIndicatorOnLoading: 2
   androidShowActivityIndicatorOnLoading: -1
-  displayResolutionDialog: 0
+  displayResolutionDialog: 1
   allowedAutorotateToPortrait: 1
   allowedAutorotateToPortraitUpsideDown: 1
   allowedAutorotateToLandscapeRight: 1

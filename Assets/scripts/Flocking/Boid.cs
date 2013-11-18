@@ -45,40 +45,6 @@ public class Boid : MonoBehaviour
     
     transform.rotation = Quaternion.LookRotation (rigidbody.velocity);
   }
-  
-  /*
-  
-  Vector3 steer ()
-  {
-    Vector3 center      = m_flockingManager.flockCenter          - transform.localPosition;      // cohesion
-    Vector3 velocity    = m_flockingManager.flockVelocity        - rigidbody.velocity;       // alignment
-    Vector3 follow      = m_flockingManager.m_target.localPosition - transform.localPosition; // follow leader
-    Vector3 separation  = Vector3.zero;                      // separation
-    
-    foreach (Boid boid in m_flockingManager.m_boids) 
-    {
-      if (boid != this) 
-      {
-        Vector3 relativePos = transform.localPosition - boid.transform.localPosition;
-        separation += relativePos / (relativePos.sqrMagnitude);       
-      }
-    }
- 
-    // 3D space   
-    Vector3 randomize = new Vector3 ((Random.value * 2) - 1, (Random.value * 2) - 1, (Random.value * 2) - 1);// randomize
- 
-    // 2D space
-    // Vector3 randomize = new Vector3((Random.value * 2) - 1, 0, (Random.value * 2) - 1);   
- 
-    randomize.Normalize ();
- 
-    return (m_flockingManager.m_centerWeight       * center      + 
-            m_flockingManager.m_velocityWeight     * velocity    + 
-            m_flockingManager.m_separationWeight   * separation  + 
-            m_flockingManager.m_followWeight       * follow      + 
-            m_flockingManager.m_randomizeWeight    * randomize);
-  }
-*/  
 }
 
 

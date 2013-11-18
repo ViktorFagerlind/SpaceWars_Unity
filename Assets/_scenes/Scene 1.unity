@@ -3698,14 +3698,14 @@ MonoBehaviour:
   m_zoneRadius: 10
   m_highThresh: .75
   m_lowThresh: .200000003
-  m_flockSize: 50
+  m_flockSize: 250
   m_prefab: {fileID: 11400000, guid: 973e06450167ed04587c28300ac01694, type: 2}
   m_minVelocity: 10
   m_maxVelocity: 30
   m_flockCenter: {x: 0, y: 0, z: 0}
   m_predator: {fileID: 1225355022}
   m_predatorDistance: 30
-  m_predatorForce: 200
+  m_predatorForce: 100
   m_forceCenter: 20
   m_forceRepel: 1
   m_forceMatchSpeed: 2

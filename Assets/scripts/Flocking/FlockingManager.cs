@@ -49,95 +49,103 @@ public class FlockingManager : MonoBehaviour
       boid.initialise (this, boidPosition, m_minVelocity, m_maxVelocity);
       m_boids[i] = boid;
     }
+    
+    StartCoroutine (ControlBoids());
   }
  
   // Update is called once per frame
-  void Update ()
+  IEnumerator ControlBoids () // Update ()
   {
-    for (int i1=0; i1 < m_flockSize; i1++) 
+    while (true)
     {
-      int i2 = i1 + 1;
-      
-      Boid b1 = m_boids[i1];
-      
-      // Handle a potential dead boid
-      if (b1 == null)
-        continue;
-      
-      // Add center gravity
-      Vector3 centerGravity = (m_flockCenter - b1.transform.position).normalized * m_forceCenter;
-      b1.rigidbody.AddForce (centerGravity);
-      
-      if (m_predator != null)
+      for (int i1=0; i1 < m_flockSize; i1++)
       {
-        Vector3 dir      = b1.transform.position - m_predator.transform.position;
-        float   distSqrd = dir.sqrMagnitude;
+        int i2 = i1 + 1;
         
-        if (distSqrd < m_predatorDistanceSqrd)
-        {
-          float F = (m_predatorDistanceSqrd / distSqrd - 1.0f) * m_predatorForce;
-          
-          b1.rigidbody.AddForce (dir.normalized * F, ForceMode.Acceleration);
-        }
-      }
-      
-      for (; i2 < m_flockSize; i2++) 
-      {
-        Boid b2 = m_boids[i2];
+        Boid b1 = m_boids[i1];
         
         // Handle a potential dead boid
-        if (b2 == null)
+        if (b1 == null)
           continue;
         
-        Vector3 dir      = b1.transform.position - b2.transform.position;
-        float   distSqrd = dir.sqrMagnitude;
+        // Add center gravity
+        Vector3 centerGravity = (m_flockCenter - b1.transform.position).normalized * m_forceCenter;
+        b1.rigidbody.AddForce (centerGravity, ForceMode.Acceleration);
 
-        if (distSqrd < m_zoneRadiusSqrd) 
-        { 
-          Vector3 b1BaseForce;
-          Vector3 b2BaseForce;
-        
-          // If the neighbor is within the zone radius...
-          float percent = distSqrd / m_zoneRadiusSqrd;
-     
-          if (percent < m_lowThresh) 
-          { 
-            // ... and is within the lower threshold limits, separate...
-            float F = (m_lowThresh / percent - 1.0f) * m_forceRepel;
-            dir = dir.normalized * F;
-            b1BaseForce = dir;
-            b2BaseForce = -dir;
-          } 
-          else if (percent < m_highThresh) 
-          { 
-            // ... else if it is within the higher threshold limits, align...
-            float threshDelta = m_highThresh - m_lowThresh;
-            float adjustedPercent = (percent - m_lowThresh) / threshDelta;
-            float F = (0.5f - Mathf.Cos (adjustedPercent * Mathf.PI * 2.0f) * 0.5f + 0.5f) * m_forceMatchSpeed;
-            b1BaseForce = b2.rigidbody.velocity.normalized * F;
-            b2BaseForce = b2.rigidbody.velocity.normalized * F;
-          } 
-          else
-          { 
-            // ... else, attract.
-            float threshDelta = 1.0f - m_highThresh;
-            float adjustedPercent = (percent - m_highThresh) / threshDelta;
-            float F = (0.5f - Mathf.Cos (adjustedPercent * Mathf.PI * 2.0f) * 0.5f + 0.5f) * m_forceAttract;
-            dir = dir.normalized * F;
-            b1BaseForce = -dir;
-            b2BaseForce = dir;
+        // Handle predator avoidance
+        if (m_predator != null)
+        {
+          Vector3 dir      = b1.transform.position - m_predator.transform.position;
+          float   distSqrd = dir.sqrMagnitude;
+          
+          if (distSqrd < m_predatorDistanceSqrd)
+          {
+            float F = (m_predatorDistanceSqrd / distSqrd - 1.0f) * m_predatorForce;
+            
+            b1.rigidbody.AddForce (dir.normalized * F, ForceMode.Acceleration);
           }
+        }
+        
+        for (; i2 < m_flockSize; i2++) 
+        {
+          Boid b2 = m_boids[i2];
           
-          //print (b2BaseForce * m_force);
-          b2BaseForce.Set (b2BaseForce.x, 0f, b2BaseForce.z);
-          b1BaseForce.Set (b1BaseForce.x, 0f, b1BaseForce.z);
+          // Handle a potential dead boid
+          if (b2 == null)
+            continue;
           
+          Vector3 dir      = b1.transform.position - b2.transform.position;
+          float   distSqrd = dir.sqrMagnitude;
+  
+          if (distSqrd < m_zoneRadiusSqrd) 
+          { 
+            Vector3 b1BaseForce;
+            Vector3 b2BaseForce;
           
-          b2.rigidbody.AddForce (b2BaseForce, ForceMode.Acceleration);
-          b1.rigidbody.AddForce (b1BaseForce, ForceMode.Acceleration);
+            // If the neighbor is within the zone radius...
+            float percent = distSqrd / m_zoneRadiusSqrd;
+       
+            if (percent < m_lowThresh) 
+            { 
+              // ... and is within the lower threshold limits, separate...
+              float F = (m_lowThresh / percent - 1.0f) * m_forceRepel;
+              dir = dir.normalized * F;
+              b1BaseForce = dir;
+              b2BaseForce = -dir;
+            } 
+            else if (percent < m_highThresh) 
+            { 
+              // ... else if it is within the higher threshold limits, align...
+              float threshDelta = m_highThresh - m_lowThresh;
+              float adjustedPercent = (percent - m_lowThresh) / threshDelta;
+              float F = (0.5f - Mathf.Cos (adjustedPercent * Mathf.PI * 2.0f) * 0.5f + 0.5f) * m_forceMatchSpeed;
+              b1BaseForce = b2.rigidbody.velocity.normalized * F;
+              b2BaseForce = b2.rigidbody.velocity.normalized * F;
+            } 
+            else
+            { 
+              // ... else, attract.
+              float threshDelta = 1.0f - m_highThresh;
+              float adjustedPercent = (percent - m_highThresh) / threshDelta;
+              float F = (0.5f - Mathf.Cos (adjustedPercent * Mathf.PI * 2.0f) * 0.5f + 0.5f) * m_forceAttract;
+              dir = dir.normalized * F;
+              b1BaseForce = -dir;
+              b2BaseForce = dir;
+            }
+            
+            //print (b2BaseForce * m_force);
+            b2BaseForce.Set (b2BaseForce.x, 0f, b2BaseForce.z);
+            b1BaseForce.Set (b1BaseForce.x, 0f, b1BaseForce.z);
+            
+            
+            b2.rigidbody.AddForce (b2BaseForce, ForceMode.Acceleration);
+            b1.rigidbody.AddForce (b1BaseForce, ForceMode.Acceleration);
+          }
         }
       }
-    }
-  }
+      
+      yield return 0;
+    } // while 
+  } // ControlBoids
 }
 
