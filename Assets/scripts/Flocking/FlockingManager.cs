@@ -13,7 +13,6 @@ public class FlockingManager : MonoBehaviour
   public float      m_maxVelocity       = 8f;
   
   public Vector3    m_flockCenter;
-  public Transform  m_predator          = null;
   public float      m_predatorDistance  = 2f;
   public float      m_predatorForce     = 8f;
   
@@ -25,6 +24,7 @@ public class FlockingManager : MonoBehaviour
   private float     m_zoneRadiusSqrd;
   private float     m_predatorDistanceSqrd;
   
+  private Transform m_predator;
   private Boid[]    m_boids;
   
   // Use this for initialization
@@ -49,6 +49,9 @@ public class FlockingManager : MonoBehaviour
       boid.initialise (this, boidPosition, m_minVelocity, m_maxVelocity);
       m_boids[i] = boid;
     }
+    
+    m_predator = GameObject.FindGameObjectWithTag ("Player").transform;
+    
     
     StartCoroutine (ControlBoids());
   }

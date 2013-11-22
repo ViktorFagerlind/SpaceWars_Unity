@@ -6,7 +6,7 @@ public class DieOutsideFrustum : MonoBehaviour
   void Update ()
   {
     if (!renderer.isVisible)
-      Destroy (gameObject);
+      Destroy (transform.root.gameObject);
   }
 
 }

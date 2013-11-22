@@ -14,5 +14,8 @@ public class SystemCommands : MonoBehaviour
   {
     if (Input.GetKey("escape"))
         Application.Quit();
+    
+    if (Input.GetKey("s"))
+      Application.CaptureScreenshot("Screenshot.png");
 	}
 }
