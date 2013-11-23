@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9dd465e360fc1c489ad53e9c1f92060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fireDeltaTime: .0299999993
+  m_fireDeltaTime: .100000001
   m_inheritSpeed: 1
   m_shotSpeed: 100
   m_shot: {fileID: 100000, guid: 876a494074e18ae47bcd4c68e669133f, type: 2}
