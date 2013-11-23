@@ -46,6 +46,7 @@ public class Weapon : MonoBehaviour
   {
     GameObject newShot;
     Vector3    shotVelocity; 
+    Vector3    shotPosition; 
     Quaternion shotRotation;
     
     // Use rigid body for speed if it exists
@@ -53,9 +54,13 @@ public class Weapon : MonoBehaviour
       m_speed = rigidbody.velocity;
     
     shotVelocity = transform.forward * m_shotSpeed + m_inheritSpeed * m_speed;
+    shotVelocity.Set (shotVelocity.x, 0f, shotVelocity.z); // no speed in Y-axis
+
     shotRotation = Quaternion.LookRotation (shotVelocity);
+
+    shotPosition = new Vector3 (transform.position.x, 0f, transform.position.z);
     
-    newShot = Instantiate (m_shot, transform.position, shotRotation) as GameObject;
+    newShot = Instantiate (m_shot, shotPosition, shotRotation) as GameObject;
     
     newShot.layer               = gameObject.layer;
     newShot.rigidbody.velocity  = shotVelocity;
