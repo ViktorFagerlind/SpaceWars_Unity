@@ -46,8 +46,7 @@ public class TimeFactory : MonoBehaviour
         continue;
       
       float deltaTime = lastCreationTimes[i] == 0f ? item.startTime : item.intervalTime;
-      print (deltaTime);
-      
+
       // Should we generate?
       if (lastCreationTimes[i] + deltaTime < currentTime)
       {
