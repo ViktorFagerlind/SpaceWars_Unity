@@ -427,8 +427,8 @@ MonoBehaviour:
   m_positionRandom: {x: 80, y: 0, z: 0}
   m_velocity: {x: 0, y: 0, z: -30}
   m_velocityRandom: {x: 5, y: 0, z: 20}
-  m_rotation: {x: .200000003, y: 0, z: 0}
-  m_rotationRandom: {x: .100000001, y: .100000001, z: .100000001}
+  m_rotationVelocity: {x: .200000003, y: 0, z: 0}
+  m_rotationVelocityRandom: {x: .100000001, y: .100000001, z: .100000001}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
