@@ -20,7 +20,7 @@ public class Boid : MonoBehaviour
     m_maxVelocitySqrd = m_maxVelocity * m_maxVelocity;
     
     rigidbody.velocity = Random.rotationUniform * Vector3.forward * Random.Range (minVelocity, maxVelocity);;
-//    rigidbody.velocity.Set (rigidbody.velocity.x, 0f, rigidbody.velocity.z);
+    rigidbody.velocity.Set (rigidbody.velocity.x, 0f, rigidbody.velocity.z);
     
     m_flockingManager = flockingManager;
   }
@@ -40,8 +40,8 @@ public class Boid : MonoBehaviour
       rigidbody.velocity = rigidbody.velocity.normalized * m_minVelocity;
     }
     
-//    transform.position = new Vector3 (transform.position.x, 0, transform.position.z);
-//    rigidbody.velocity.Set (rigidbody.velocity.x, 0f, rigidbody.velocity.z);
+    transform.position = new Vector3 (transform.position.x, 0, transform.position.z);
+    rigidbody.velocity.Set (rigidbody.velocity.x, 0f, rigidbody.velocity.z);
     
     transform.rotation = Quaternion.LookRotation (rigidbody.velocity);
   }

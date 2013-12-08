@@ -14,9 +14,9 @@ public class Weapon : MonoBehaviour
   
   private float       m_lastShotTime; 
   
+  // ------------------------------------------------------------------------------------------------------------------------------------------
   
-	// Use this for initialization
-	void Start () 
+  void Start () 
   {
     m_speed = new Vector3 (0, 0, 0);
     m_previousPosition = gameObject.transform.position;
@@ -28,6 +28,8 @@ public class Weapon : MonoBehaviour
     m_lastShotTime = Time.realtimeSinceStartup + Random.Range (0f, m_fireDeltaTime);
 	}
 	
+  // ------------------------------------------------------------------------------------------------------------------------------------------
+  
   void SpeedCheck ()
   {
     m_speed = (gameObject.transform.position - m_previousPosition) / m_speedCalculationTime;
@@ -35,12 +37,16 @@ public class Weapon : MonoBehaviour
     m_previousPosition = gameObject.transform.position;
   }
   
+  // ------------------------------------------------------------------------------------------------------------------------------------------
+  
   public bool IsTimeToShoot ()
   {
     float currentTime = Time.realtimeSinceStartup;
     
     return m_lastShotTime + m_fireDeltaTime < currentTime;
   }
+  
+  // ------------------------------------------------------------------------------------------------------------------------------------------
   
   public void Shoot ()
   {

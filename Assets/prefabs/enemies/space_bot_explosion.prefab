@@ -38,9 +38,9 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: c751c3e22298b7645bb627fe9d65f944, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b449c871275cd0442bc4a1ba2fb9b68e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .0879999995
+  m_Volume: .0199999996
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1124,6 +1124,9 @@ ParticleSystemRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0

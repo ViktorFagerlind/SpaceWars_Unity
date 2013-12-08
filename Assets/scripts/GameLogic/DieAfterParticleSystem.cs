@@ -8,6 +8,6 @@ public class DieAfterParticleSystem : MonoBehaviour
   void Update ()
   {
     if (!particleSystem.isPlaying)
-      Destroy (gameObject);
+      Destroy (transform.root.gameObject);
   }
 }
