@@ -72,7 +72,7 @@ Transform:
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106829}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .233988762, y: .233988762, z: .233988762}
+  m_LocalScale: {x: .173751637, y: .173751637, z: .173751637}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 400004}
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: -19.1094704, y: .0640807152, z: 1.28192377}
+  m_LocalPosition: {x: -19.1952057, y: .0640807152, z: 1.28192353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -124,7 +124,7 @@ Rigidbody:
   m_GameObject: {fileID: 100004}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 10
+  m_Drag: 1
   m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -150,7 +150,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: db540b7c44602cd4ebde72bd92001d8a, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -165,15 +165,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2177fa8d372e86f4f974f27c5b786888, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b06251aee21c1a4cb4dfbb7e8c6bf1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_lean: 1.20000005
-  m_stabilize_speed: 50
+  m_stabilize_speed: 10
   m_stabilize_stability: .300000012
-  m_move_dist_weight: 100
-  m_move_max_force: 1000
-  m_target: {fileID: 0}
+  m_move_dist_weight: 4
+  m_move_max_force: 200
+  m_pathName: dark path
+  m_switchDistanceSqrd: 500
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_damageOutput: 100
-  m_health: 1000
+  m_health: 300
   m_deathExplosion: {fileID: 100000, guid: 8045381abb479f1478383afc57999f29, type: 2}
   m_hitExplosion: {fileID: 0}
 --- !u!114 &11400004
@@ -202,8 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_scale: {x: 1, y: 1, z: 1}
   m_scaleRandom: {x: 0, y: 0, z: 0}
-  m_position: {x: 0, y: 0, z: 50}
-  m_positionRandom: {x: 80, y: 0, z: 0}
+  m_position: {x: -40, y: 0, z: 50}
+  m_positionRandom: {x: 0, y: 0, z: 0}
   m_velocity: {x: 0, y: 0, z: 0}
   m_velocityRandom: {x: 0, y: 0, z: 0}
   m_rotation: {x: 0, y: 180, z: 0}

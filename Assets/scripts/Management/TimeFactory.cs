@@ -9,10 +9,18 @@ public class TimeFactory : MonoBehaviour
   [System.Serializable]
   public class FactoryItem
   {
-    public Transform entity       = null;
-    public float     startTime    = 0;
-    public float     intervalTime = 1;
-    public float     endTime      = 10;
+    public  Transform entity           = null;
+    public  float     startTime        = 0;
+    public  float     intervalTime     = 1;
+    public  float     endTime          = 10;
+    public  int       endCount         = 10;
+
+    [HideInInspector]
+    public bool      done              = false;
+    [HideInInspector]
+    public float     lastCreationTime  = 0;
+    [HideInInspector]
+    public int       count             = 0;
   }
  
   // --- Public attributes ---------------------------------------------------------------------------------------------
@@ -21,39 +29,50 @@ public class TimeFactory : MonoBehaviour
   
   // --- Private Attributes --------------------------------------------------------------------------------------------
   
-  private float[]      lastCreationTimes;
-  
+
   // --- Methods -------------------------------------------------------------------------------------------------------
   
 	void Start ()
   {
-    lastCreationTimes = new float[factoryItems.Length];
-    
-    for (int i=0; i < lastCreationTimes.Length; i++)
-      lastCreationTimes[i] = 0f;
-	}
+    foreach (FactoryItem item in factoryItems)
+    {
+      item.done             = false;
+      item.lastCreationTime = 0.0f;
+      item.count            = 0;
+    }
+  }
         
   void Update ()
   {
+    bool noItemsLeft = true;
+
     float currentTime = Time.realtimeSinceStartup;
     
-    for (int i=0; i < factoryItems.Length; i++)
+    foreach (FactoryItem item in factoryItems)
     {
-      FactoryItem item = factoryItems[i];
-      
       // Time to stop generating?
-      if (currentTime > item.endTime)
+      if (item.done || currentTime > item.endTime || item.count >= item.endCount)
+      { 
+        item.done = true;
         continue;
-      
-      float deltaTime = lastCreationTimes[i] == 0f ? item.startTime : item.intervalTime;
+      }
+
+      noItemsLeft = false;
+
+      float deltaTime = item.lastCreationTime == 0f ? item.startTime : item.intervalTime;
 
       // Should we generate?
-      if (lastCreationTimes[i] + deltaTime < currentTime)
+      if (item.lastCreationTime + deltaTime < currentTime)
       {
         Instantiate (item.entity, Vector3.zero, Quaternion.identity);
-        lastCreationTimes[i] = currentTime;
+
+        item.lastCreationTime = currentTime;
+        item.count++;
       }
     }
+
+    if (noItemsLeft)
+      Destroy (gameObject);
   }
   
 }

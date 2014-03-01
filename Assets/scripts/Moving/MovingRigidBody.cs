@@ -10,11 +10,14 @@ public class MovingRigidBody : MonoBehaviour
 
   public float m_move_dist_weight     = 250;
   public float m_move_max_force       = 10000;
+  public float m_move_max_velocity    = 10000;
 
+  private float m_move_max_velocity_sqrd = 10000;
   // ------------------------------------------------------------------------------------------------------------------------------------------
   
   void Start ()
   {
+    m_move_max_velocity_sqrd = m_move_max_velocity * m_move_max_velocity;
   }
 
   // ------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,6 +26,11 @@ public class MovingRigidBody : MonoBehaviour
   {
     Vector3 distance  = to_position - transform.position;
     Vector3 force     = m_move_dist_weight * distance;
+
+    // Do not add force in the velocity direction if maximum speed is reached.
+    if ((Vector3.Dot (rigidbody.velocity, force) > 0.0f) &&
+        rigidbody.velocity.sqrMagnitude >= m_move_max_velocity_sqrd)
+      return;
 
     if (force.sqrMagnitude > m_move_max_force * m_move_max_force)
     {
