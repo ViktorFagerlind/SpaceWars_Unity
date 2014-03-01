@@ -17,7 +17,7 @@ public class PlayerController : MovingRigidBody
 
     //print ("Fixed speed: " + rigidbody.velocity.magnitude);
 
-    Move (mousePosition);
+    Move (mousePosition + new Vector3 (0,0,8));
 
     Stabilize (Vector3.forward);
 

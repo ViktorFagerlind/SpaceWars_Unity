@@ -41,7 +41,7 @@ MonoBehaviour:
   factoryItems:
   - entity: {fileID: 400004, guid: 1fe3f8157400e1b4792ce6111d4e2d9a, type: 2}
     startTime: 0
-    intervalTime: .400000006
+    intervalTime: .600000024
     endTime: 100
     endCount: 5
     done: 0

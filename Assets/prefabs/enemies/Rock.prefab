@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_damageOutput: 10
   m_health: 100
-  m_deathExplosion: {fileID: 100000, guid: 9d04692d5aa95594c97f876209f49b8b, type: 2}
+  m_deathExplosion: {fileID: 100032, guid: 09c79ada8c413ce42a1657fe158e0e34, type: 2}
   m_hitExplosion: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
